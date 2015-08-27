@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141DC6581B8EA8620004BCD8 /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 141DC6571B8EA8620004BCD8 /* readme */; };
 		145A46E61B8C37FC001802BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 145A46E51B8C37FC001802BF /* main.m */; };
 		145A46E91B8C37FD001802BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 145A46E81B8C37FD001802BF /* AppDelegate.m */; };
 		145A46EC1B8C37FD001802BF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 145A46EB1B8C37FD001802BF /* ViewController.m */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		08078E48805BD064007DFF42 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		141DC6571B8EA8620004BCD8 /* readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		145A46E01B8C37FC001802BF /* TestPods.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestPods.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		145A46E41B8C37FC001802BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		145A46E51B8C37FC001802BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -65,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		141DC6561B8EA80E0004BCD8 /* Doc */ = {
+			isa = PBXGroup;
+			children = (
+				141DC6571B8EA8620004BCD8 /* readme */,
+			);
+			path = Doc;
+			sourceTree = "<group>";
+		};
 		145A46D71B8C37FC001802BF = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +82,7 @@
 				145A46FC1B8C37FD001802BF /* TestPodsTests */,
 				145A46E11B8C37FC001802BF /* Products */,
 				493B1C7F4C3BE1958164357D /* Pods */,
+				141DC6561B8EA80E0004BCD8 /* Doc */,
 				51B91536CD0E9572626B90F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -230,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				141DC6581B8EA8620004BCD8 /* readme in Resources */,
 				145A46EF1B8C37FD001802BF /* Main.storyboard in Resources */,
 				145A46F41B8C37FD001802BF /* LaunchScreen.xib in Resources */,
 				145A46F11B8C37FD001802BF /* Images.xcassets in Resources */,
