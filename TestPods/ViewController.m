@@ -64,10 +64,9 @@ static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg"
     
     
     
-    AFHTTPSessionManager *sm = [AFHTTPSessionManager manager];
     
 
-    [self start:nil];
+//    [self start:nil];
 
 
 }
