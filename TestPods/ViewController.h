@@ -7,18 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReformerProtocol.h"
+
 
 @interface ViewController : UIViewController
 
 
-@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
-
-- (IBAction)start:(id)sender;
-
-
-@property (nonatomic) NSURLSession *session;
-@property (nonatomic) NSURLSessionDownloadTask *downloadTask;
-@property (strong, nonatomic) UIDocumentInteractionController *documentInteractionController;
+@property (nonatomic, strong) id<ReformerProtocol> XXXReformer;
+@property (nonatomic, strong) id<ReformerProtocol> YYYReformer;
 
 
 @end

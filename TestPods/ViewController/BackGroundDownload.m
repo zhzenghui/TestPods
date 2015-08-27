@@ -1,30 +1,24 @@
 //
-//  ViewController.m
+//  BackGroundDownload.m
 //  TestPods
 //
-//  Created by xy on 15/8/25.
+//  Created by xy on 15/8/27.
 //  Copyright (c) 2015年 XY. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "BackGroundDownload.h"
+
 #import "AFNetworking.h"
 
 #import "AppDelegate.h"
 
-
-
-
-
 static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg";
 
-@interface ViewController () < NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate,UIDocumentInteractionControllerDelegate>
+@interface BackGroundDownload () < NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate,UIDocumentInteractionControllerDelegate>
 
 @end
 
-@implementation ViewController
-
-
-
+@implementation BackGroundDownload
 
 -(void)presentNotification{
     
@@ -34,7 +28,7 @@ static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg"
         
     }
     
-
+    
     
     
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
@@ -55,8 +49,8 @@ static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-
+    
+    
     self.session = [self backgroundSession];
     
     self.progressView.progress = 0;
@@ -65,10 +59,10 @@ static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg"
     
     
     
-
-//    [self start:nil];
-
-
+    
+    //    [self start:nil];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,7 +104,7 @@ static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg"
         double progress = (double)totalBytesWritten / (double)totalBytesExpectedToWrite;
         NSLog(@"DownloadTask: %@ progress: %lf", downloadTask, progress);
         
-
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             self.progressView.progress = progress;
         });
@@ -154,7 +148,7 @@ static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg"
     if (error == nil) {
         NSLog(@"Task: %@ completed successfully", task);
         [self presentNotification];
-
+        
     } else {
         NSLog(@"Task: %@ completed with error: %@", task,   error  );
     }

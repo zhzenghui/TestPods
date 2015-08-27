@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		141DC65A1B8EAB120004BCD8 /* readme.md in Sources */ = {isa = PBXBuildFile; fileRef = 141DC6591B8EAB120004BCD8 /* readme.md */; };
+		141DC65D1B8EAF4E0004BCD8 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 141DC65C1B8EAF4E0004BCD8 /* APIManager.m */; };
+		141DC6601B8EAF8F0004BCD8 /* BackGroundDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 141DC65F1B8EAF8F0004BCD8 /* BackGroundDownload.m */; };
+		141DC6651B8EB3950004BCD8 /* PropertyListReformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 141DC6641B8EB3950004BCD8 /* PropertyListReformer.m */; };
+		141DC6681B8EB3E40004BCD8 /* ZuFangListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 141DC6671B8EB3E40004BCD8 /* ZuFangListAPIManager.m */; };
+		141DC66B1B8EB3F60004BCD8 /* XinFangListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 141DC66A1B8EB3F60004BCD8 /* XinFangListAPIManager.m */; };
+		141DC66E1B8EB4060004BCD8 /* ErShouFangListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 141DC66D1B8EB4060004BCD8 /* ErShouFangListAPIManager.m */; };
+		141DC6711B8EB6100004BCD8 /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 141DC6701B8EB6100004BCD8 /* UIImage+Helper.m */; };
 		145A46E61B8C37FC001802BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 145A46E51B8C37FC001802BF /* main.m */; };
 		145A46E91B8C37FD001802BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 145A46E81B8C37FD001802BF /* AppDelegate.m */; };
 		145A46EC1B8C37FD001802BF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 145A46EB1B8C37FD001802BF /* ViewController.m */; };
@@ -31,6 +38,22 @@
 /* Begin PBXFileReference section */
 		08078E48805BD064007DFF42 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		141DC6591B8EAB120004BCD8 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = SOURCE_ROOT; };
+		141DC65B1B8EAF4E0004BCD8 /* APIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIManager.h; path = API/APIManager.h; sourceTree = "<group>"; };
+		141DC65C1B8EAF4E0004BCD8 /* APIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIManager.m; path = API/APIManager.m; sourceTree = "<group>"; };
+		141DC65E1B8EAF8F0004BCD8 /* BackGroundDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackGroundDownload.h; path = ViewController/BackGroundDownload.h; sourceTree = "<group>"; };
+		141DC65F1B8EAF8F0004BCD8 /* BackGroundDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackGroundDownload.m; path = ViewController/BackGroundDownload.m; sourceTree = "<group>"; };
+		141DC6611B8EB0290004BCD8 /* ReformerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReformerProtocol.h; sourceTree = "<group>"; };
+		141DC6621B8EB36A0004BCD8 /* PropertyListReformerKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyListReformerKeys.h; sourceTree = "<group>"; };
+		141DC6631B8EB3950004BCD8 /* PropertyListReformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyListReformer.h; sourceTree = "<group>"; };
+		141DC6641B8EB3950004BCD8 /* PropertyListReformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyListReformer.m; sourceTree = "<group>"; };
+		141DC6661B8EB3E40004BCD8 /* ZuFangListAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZuFangListAPIManager.h; sourceTree = "<group>"; };
+		141DC6671B8EB3E40004BCD8 /* ZuFangListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZuFangListAPIManager.m; sourceTree = "<group>"; };
+		141DC6691B8EB3F60004BCD8 /* XinFangListAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XinFangListAPIManager.h; sourceTree = "<group>"; };
+		141DC66A1B8EB3F60004BCD8 /* XinFangListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XinFangListAPIManager.m; sourceTree = "<group>"; };
+		141DC66C1B8EB4060004BCD8 /* ErShouFangListAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErShouFangListAPIManager.h; sourceTree = "<group>"; };
+		141DC66D1B8EB4060004BCD8 /* ErShouFangListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErShouFangListAPIManager.m; sourceTree = "<group>"; };
+		141DC66F1B8EB6100004BCD8 /* UIImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
+		141DC6701B8EB6100004BCD8 /* UIImage+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
 		145A46E01B8C37FC001802BF /* TestPods.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestPods.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		145A46E41B8C37FC001802BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		145A46E51B8C37FC001802BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -75,6 +98,21 @@
 			path = Doc;
 			sourceTree = "<group>";
 		};
+		141DC6721B8EB6D00004BCD8 /* APiManager */ = {
+			isa = PBXGroup;
+			children = (
+				141DC65B1B8EAF4E0004BCD8 /* APIManager.h */,
+				141DC65C1B8EAF4E0004BCD8 /* APIManager.m */,
+				141DC6661B8EB3E40004BCD8 /* ZuFangListAPIManager.h */,
+				141DC6671B8EB3E40004BCD8 /* ZuFangListAPIManager.m */,
+				141DC6691B8EB3F60004BCD8 /* XinFangListAPIManager.h */,
+				141DC66A1B8EB3F60004BCD8 /* XinFangListAPIManager.m */,
+				141DC66C1B8EB4060004BCD8 /* ErShouFangListAPIManager.h */,
+				141DC66D1B8EB4060004BCD8 /* ErShouFangListAPIManager.m */,
+			);
+			name = APiManager;
+			sourceTree = "<group>";
+		};
 		145A46D71B8C37FC001802BF = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +142,15 @@
 				145A46ED1B8C37FD001802BF /* Main.storyboard */,
 				145A46EA1B8C37FD001802BF /* ViewController.h */,
 				145A46EB1B8C37FD001802BF /* ViewController.m */,
+				141DC65E1B8EAF8F0004BCD8 /* BackGroundDownload.h */,
+				141DC65F1B8EAF8F0004BCD8 /* BackGroundDownload.m */,
+				141DC66F1B8EB6100004BCD8 /* UIImage+Helper.h */,
+				141DC6701B8EB6100004BCD8 /* UIImage+Helper.m */,
+				141DC6611B8EB0290004BCD8 /* ReformerProtocol.h */,
+				141DC6721B8EB6D00004BCD8 /* APiManager */,
+				141DC6621B8EB36A0004BCD8 /* PropertyListReformerKeys.h */,
+				141DC6631B8EB3950004BCD8 /* PropertyListReformer.h */,
+				141DC6641B8EB3950004BCD8 /* PropertyListReformer.m */,
 				145A46F01B8C37FD001802BF /* Images.xcassets */,
 				145A46F21B8C37FD001802BF /* LaunchScreen.xib */,
 				145A46E31B8C37FC001802BF /* Supporting Files */,
@@ -294,10 +341,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				141DC6651B8EB3950004BCD8 /* PropertyListReformer.m in Sources */,
 				145A46EC1B8C37FD001802BF /* ViewController.m in Sources */,
 				145A46E91B8C37FD001802BF /* AppDelegate.m in Sources */,
 				141DC65A1B8EAB120004BCD8 /* readme.md in Sources */,
+				141DC66E1B8EB4060004BCD8 /* ErShouFangListAPIManager.m in Sources */,
+				141DC6601B8EAF8F0004BCD8 /* BackGroundDownload.m in Sources */,
+				141DC6711B8EB6100004BCD8 /* UIImage+Helper.m in Sources */,
+				141DC6681B8EB3E40004BCD8 /* ZuFangListAPIManager.m in Sources */,
 				145A46E61B8C37FC001802BF /* main.m in Sources */,
+				141DC65D1B8EAF4E0004BCD8 /* APIManager.m in Sources */,
+				141DC66B1B8EB3F60004BCD8 /* XinFangListAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
