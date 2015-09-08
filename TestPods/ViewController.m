@@ -35,32 +35,38 @@ static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg"
 
 
 
-
+static int complite = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     
-    [queue setMaxConcurrentOperationCount:2];
+    [queue setMaxConcurrentOperationCount:1];
     queue = [[NSOperationQueue alloc] init];
 
-    
+    NSArray *a = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"plsqldev714" ofType:@"plist"]];
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    [array addObject:@{@"url": @"http://www.apple.com"}];
-    [array addObject:@{@"url": @"http://www.yahoo.com"}];
-    [array addObject:@{@"url": @"http://www.zarrastudios.com"}];
+//    [array addObject:@{@"url": @"http://www.apple.com"}];
+//    [array addObject:@{@"url": @"http://www.yahoo.com"}];
+//    [array addObject:@{@"url": @"http://www.zarrastudios.com"}];
+    
+    
+    for (int i = 0 ; i< a.count; i++) {
+        [array addObject:@{@"url": @"", @"post": a[i],@"index": [NSNumber numberWithInt:i]}];
+    }
+    
     urlArray = array;
-
     
     
     
     
-    __weak NSString *st1 = @"sunny".lowercaseString;
-    __weak NSString *st2;
-    st2 = @"suny".lowercaseString;
     
-    NSLog(@"%@, %@", st1, st2);
+//    __weak NSString *st1 = @"sunny".lowercaseString;
+//    __weak NSString *st2;
+//    st2 = @"suny".lowercaseString;
+//    
+//    NSLog(@"%@, %@", st1, st2);
     
     begin = mach_absolute_time();
 
@@ -105,7 +111,7 @@ double MachTimeToSecs(uint64_t time)
     
     uint64_t end = mach_absolute_time();
     
-    NSLog(@"Time taken to doSomething %g s", MachTimeToSecs(end - begin));
+    NSLog(@"Time taken to doSomething %g s  %@  complite:%d", MachTimeToSecs(end - begin), downloader, complite++);
     
  
     

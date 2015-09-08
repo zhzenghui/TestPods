@@ -8,6 +8,7 @@
 
 #import "PageLoadOperation.h"
 #import "AppDelegate.h"
+#import "AFNetworking.h"
 
 @implementation PageLoadOperation
 
@@ -107,23 +108,46 @@ static int down_count = 5;
     @autoreleasepool {
         if (self.isCancelled)
             return;
-        
-        
-        [self dowloadRecursion:down_count];
-        
-        
-        if ( ! downloadResoult) {
+
+        NSString *post = @"<root><head><signCode>5029C3055D51555112B60B33000122D5</signCode><appVersion>5.0</appVersion><coreFrameVersion>1.1.0</coreFrameVersion><timestamp>2015-09-08 14:21:37</timestamp><clientos>iPhone OS_8.4</clientos><appid>com.bitcar.DSA50</appid></head><body><Params><UserId>87d169b4-8f28-478b-bc71-a34600f9eb0d</UserId><OrganizationId>c921ce08-ea6e-406f-a263-eb94f1feb4ff</OrganizationId><BrandId>3427b247-07a2-4832-94e1-07c41c62f9bc</BrandId><ClientDataUnitVersion>0</ClientDataUnitVersion><ServerDataUnitVersion>13711451</ServerDataUnitVersion><DataUnitCode>BitCar_Permission_Brand</DataUnitCode></Params><Content></Content></body></root>";//self.dict[@"post"];
+        NSData* sendData = [post dataUsingEncoding:NSUTF8StringEncoding];;
+
+        NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://192.168.43.62:8090/DataSyncAPI/fetchdata"] cachePolicy:(NSURLRequestUseProtocolCachePolicy) timeoutInterval:30.0];
+        [request setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
+        request.HTTPMethod = @"POST";
+        request.HTTPBody =sendData;
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [operation setResponseSerializer:[AFHTTPResponseSerializer serializer]];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * operation, id responseObject) {
+            NSString * a= [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",a);
             
-            NSLog(@"下载失败文件name:%@, 尝试下载%d次, url:%@", [self.dict objectForKey:@"name"], down_count,[self.dict objectForKey:@"url"]);
-        }
-        
-        
-        
-        if (self.isCancelled)
-            return;
-        
+            [(NSObject *)self.delegate performSelectorOnMainThread:@selector(downloaderDidFinish:) withObject:self.dict waitUntilDone:NO];
+
+            
+            
+            
+        } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
+            NSLog(@"%@",error);
+             //        dispatch_semaphore_signal(semaphore);
+        }];
+        [operation start];
+
+//        
+//        [self dowloadRecursion:down_count];
+//        
+//        
+//        if ( ! downloadResoult) {
+//            
+//            NSLog(@"下载失败文件name:%@, 尝试下载%d次, url:%@", [self.dict objectForKey:@"name"], down_count,[self.dict objectForKey:@"url"]);
+//        }
+//        
+//        
+//        
+//        if (self.isCancelled)
+//            return;
+//        
         // 5: Cast the operation to NSObject, and notify the caller on the main thread.
-        [(NSObject *)self.delegate performSelectorOnMainThread:@selector(downloaderDidFinish:) withObject:self waitUntilDone:NO];
         
     }
 }
