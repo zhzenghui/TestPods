@@ -47,9 +47,6 @@ static int complite = 0;
     NSArray *a = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"plsqldev714" ofType:@"plist"]];
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
-//    [array addObject:@{@"url": @"http://www.apple.com"}];
-//    [array addObject:@{@"url": @"http://www.yahoo.com"}];
-//    [array addObject:@{@"url": @"http://www.zarrastudios.com"}];
     
     
     for (int i = 0 ; i< a.count; i++) {
@@ -111,7 +108,7 @@ double MachTimeToSecs(uint64_t time)
     
     uint64_t end = mach_absolute_time();
     
-    NSLog(@"Time taken to doSomething %g s  %@  complite:%d", MachTimeToSecs(end - begin), downloader, complite++);
+    NSLog(@"Time taken to doSomething %g s   complite:%d", MachTimeToSecs(end - begin), complite++);
     
  
     
