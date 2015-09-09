@@ -41,9 +41,11 @@ static int complite = 0;
     [super viewDidLoad];
 
     
-    [queue setMaxConcurrentOperationCount:1];
-    queue = [[NSOperationQueue alloc] init];
 
+    queue = [[NSOperationQueue alloc] init];
+    [queue setMaxConcurrentOperationCount:1];
+    
+    
     NSArray *a = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"plsqldev714" ofType:@"plist"]];
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
@@ -81,7 +83,10 @@ static int complite = 0;
     for (NSDictionary *dict in urlArray) {
         
          PageLoadOperation *plo = [[PageLoadOperation alloc] initWithPhotoRecord:dict delegate:self];
+ 
         [queue addOperation:plo];
+        
+
     }
 }
 
@@ -108,7 +113,7 @@ double MachTimeToSecs(uint64_t time)
     
     uint64_t end = mach_absolute_time();
     
-    NSLog(@"Time taken to doSomething %g s   complite:%d", MachTimeToSecs(end - begin), complite++);
+    NSLog(@"Time taken to doSomething %g s  index:%i complite:%d", MachTimeToSecs(end - begin), [downloader[@"index"] intValue], complite++);
     
  
     

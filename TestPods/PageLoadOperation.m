@@ -112,16 +112,19 @@ static int down_count = 5;
         NSString *post = @"<root><head><signCode>5029C3055D51555112B60B33000122D5</signCode><appVersion>5.0</appVersion><coreFrameVersion>1.1.0</coreFrameVersion><timestamp>2015-09-08 14:21:37</timestamp><clientos>iPhone OS_8.4</clientos><appid>com.bitcar.DSA50</appid></head><body><Params><UserId>87d169b4-8f28-478b-bc71-a34600f9eb0d</UserId><OrganizationId>c921ce08-ea6e-406f-a263-eb94f1feb4ff</OrganizationId><BrandId>3427b247-07a2-4832-94e1-07c41c62f9bc</BrandId><ClientDataUnitVersion>0</ClientDataUnitVersion><ServerDataUnitVersion>13711451</ServerDataUnitVersion><DataUnitCode>BitCar_Permission_Brand</DataUnitCode></Params><Content></Content></body></root>";//self.dict[@"post"];
         NSData* sendData = [post dataUsingEncoding:NSUTF8StringEncoding];;
 
-        NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://dealer.chevy-ds.com/DataSyncAPI/fetchdata"] cachePolicy:(NSURLRequestUseProtocolCachePolicy) timeoutInterval:30.0];
+        NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://dealer.chevy-ds.com/DataSyncAPI/fetchdata"] cachePolicy:(NSURLRequestUseProtocolCachePolicy) timeoutInterval:120.0];
         [request setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
         request.HTTPMethod = @"POST";
         request.HTTPBody =sendData;
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         [operation setResponseSerializer:[AFHTTPResponseSerializer serializer]];
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * operation, id responseObject) {
-//            NSString * a= [[÷NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//            NSLog(@"%@",a);÷
-            
+//            NSString * a= [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//            NSString * path=[ NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ];
+//            path=[[ NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ] stringByAppendingPathComponent :[NSString stringWithFormat:@"%i", [self.dict[@"index"] intValue]] ];
+//            
+//            [a writeToFile:path   atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//            sleep(1);
             [(NSObject *)self.delegate performSelectorOnMainThread:@selector(downloaderDidFinish:) withObject:self.dict waitUntilDone:NO];
 
             
@@ -129,9 +132,15 @@ static int down_count = 5;
             
         } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
             NSLog(@"%@",error);
+            
+            NSLog(@"Time   index:%i  ",   [self.dict[@"index"] intValue] );
+
              //        dispatch_semaphore_signal(semaphore);
         }];
-        [operation start];
+        
+        [[NSOperationQueue currentQueue] addOperation:operation];
+
+//        [operation start];
 
 //        
 //        [self dowloadRecursion:down_count];
