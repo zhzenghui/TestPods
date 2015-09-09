@@ -37,11 +37,9 @@ static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg"
 
 static int complite = 0;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
 
+- (void)startTestConnectons {
     
-
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:1];
     
@@ -61,14 +59,20 @@ static int complite = 0;
     
     
     
-//    __weak NSString *st1 = @"sunny".lowercaseString;
-//    __weak NSString *st2;
-//    st2 = @"suny".lowercaseString;
-//    
-//    NSLog(@"%@, %@", st1, st2);
+    //    __weak NSString *st1 = @"sunny".lowercaseString;
+    //    __weak NSString *st2;
+    //    st2 = @"suny".lowercaseString;
+    //
+    //    NSLog(@"%@, %@", st1, st2);
     
     begin = mach_absolute_time();
+}
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    
+    [self startTestConnectons];
 }
 
 
