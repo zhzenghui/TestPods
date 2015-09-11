@@ -9,6 +9,9 @@
 #import "PageLoadOperation.h"
 #import "AppDelegate.h"
 #import "AFNetworking.h"
+#import "DAPXMLParser.h"
+#import "WriteToDB.h"
+
 
 @implementation PageLoadOperation
 
@@ -31,77 +34,13 @@ static int down_count = 5;
 
 
 
-- (void)finsh:(NSData *)data content:(NSDictionary *)content
-{
-    
-//    ZHFileCache *zfc = [[ZHFileCache alloc] init];
-//    
-//    [zfc saveFile:data fileName:[content objectForKey:@"name"] ];
-}
 
 
-
-- (BOOL)downLoad:(NSString *)pathUrlString
-{
-    
-    
-    NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString: pathUrlString]];
-    
-    if (self.isCancelled) {
-        
-        data = nil;
-        return NO;
-    }
-    
-    if (data) {
-        
-        [self finsh:data content:self.dict];
-        return YES;
-        
-    }
-    else {
-        data = nil;
-        return NO;
-    }
-    
-    data = nil;
-    
-    return NO;
-}
 
 #pragma mark -
 #pragma mark - Downloading image
 
-- (void)dowloadRecursion:(int)count
-{
-    
-    
-    NSString *pathUrlString = [NSString string];
-    
-    
-    if (self.dict) {
-        pathUrlString = [self.dict objectForKey:@"url"];
-    }
-    
-    pathUrlString = [pathUrlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@", pathUrlString);
-    bool downloadResult= [self downLoad:pathUrlString];
-    
-    if ( downloadResult ) {
-        
-        downloadResoult = true;
-        return;
-    }
-    else {
-        downloadResoult = false;
-        
-        count--;
-        if (count != 0) {
-            [self dowloadRecursion:count];
-        }
-        return;
-    }
-}
+
  
 - (void)main {
 
@@ -109,7 +48,7 @@ static int down_count = 5;
         if (self.isCancelled)
             return;
 
-        NSString *post = @"<root><head><signCode>5029C3055D51555112B60B33000122D5</signCode><appVersion>5.0</appVersion><coreFrameVersion>1.1.0</coreFrameVersion><timestamp>2015-09-08 14:21:37</timestamp><clientos>iPhone OS_8.4</clientos><appid>com.bitcar.DSA50</appid></head><body><Params><UserId>87d169b4-8f28-478b-bc71-a34600f9eb0d</UserId><OrganizationId>c921ce08-ea6e-406f-a263-eb94f1feb4ff</OrganizationId><BrandId>3427b247-07a2-4832-94e1-07c41c62f9bc</BrandId><ClientDataUnitVersion>0</ClientDataUnitVersion><ServerDataUnitVersion>13711451</ServerDataUnitVersion><DataUnitCode>BitCar_Permission_Brand</DataUnitCode></Params><Content></Content></body></root>";//self.dict[@"post"];
+        NSString *post = self.dict[@"post"];
         NSData* sendData = [post dataUsingEncoding:NSUTF8StringEncoding];;
 
         NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://dealer.chevy-ds.com/DataSyncAPI/fetchdata"] cachePolicy:(NSURLRequestUseProtocolCachePolicy) timeoutInterval:120.0];
@@ -119,12 +58,31 @@ static int down_count = 5;
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         [operation setResponseSerializer:[AFHTTPResponseSerializer serializer]];
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * operation, id responseObject) {
+
+//            缓存文件
 //            NSString * a= [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 //            NSString * path=[ NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ];
 //            path=[[ NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ] stringByAppendingPathComponent :[NSString stringWithFormat:@"%i", [self.dict[@"index"] intValue]] ];
+////
+//            NSError *error = nil;
+//            [a writeToFile:path   atomically:YES encoding:NSUTF8StringEncoding error:&error];
 //            
-//            [a writeToFile:path   atomically:YES encoding:NSUTF8StringEncoding error:nil];
-//            sleep(1);
+//            if (error) {
+//                NSLog(@"%@", error);
+//            }
+            
+            DAPXMLParser* pars = [[DAPXMLParser alloc] init];
+            NSInteger err = [pars parse:responseObject];
+            if (err == 0)
+            {
+               NSDictionary *parserDic = pars.dic_result;
+//                NSLog(@"xml pars: %i", self.dict[@"index"]);
+                WriteToDB *rtb = [WriteToDB sharedManager];
+                [rtb writeDB:parserDic];
+                
+            }
+            
+            
             [(NSObject *)self.delegate performSelectorOnMainThread:@selector(downloaderDidFinish:) withObject:self.dict waitUntilDone:NO];
 
             
@@ -135,28 +93,14 @@ static int down_count = 5;
             
             NSLog(@"Time   index:%i  ",   [self.dict[@"index"] intValue] );
 
-             //        dispatch_semaphore_signal(semaphore);
         }];
         
         [[NSOperationQueue currentQueue] addOperation:operation];
 
-//        [operation start];
+   
+        if (self.isCancelled)
+            return;
 
-//        
-//        [self dowloadRecursion:down_count];
-//        
-//        
-//        if ( ! downloadResoult) {
-//            
-//            NSLog(@"下载失败文件name:%@, 尝试下载%d次, url:%@", [self.dict objectForKey:@"name"], down_count,[self.dict objectForKey:@"url"]);
-//        }
-//        
-//        
-//        
-//        if (self.isCancelled)
-//            return;
-//        
-        // 5: Cast the operation to NSObject, and notify the caller on the main thread.
         
     }
 }

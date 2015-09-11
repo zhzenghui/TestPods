@@ -16,7 +16,7 @@
 
 #import "PageLoadOperation.h"
 
-#import <mach/mach_time.h> // for mach_absolute_time
+#import "T.h"
 
 
 
@@ -41,7 +41,7 @@ static int complite = 0;
 - (void)startTestConnectons {
     
     queue = [[NSOperationQueue alloc] init];
-    [queue setMaxConcurrentOperationCount:1];
+    [queue setMaxConcurrentOperationCount:6];
     
     
     NSArray *a = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"plsqldev714" ofType:@"plist"]];
@@ -100,14 +100,6 @@ static int complite = 0;
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - MachTime
-
-double MachTimeToSecs(uint64_t time)
-{
-    mach_timebase_info_data_t timebase;
-    mach_timebase_info(&timebase);
-    return (double)time * (double)timebase.numer /  (double)timebase.denom / 1e9;
-}
 
 
 #pragma mark - PageLoadOperation delegate

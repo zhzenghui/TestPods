@@ -22,6 +22,11 @@
 		145A46F11B8C37FD001802BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 145A46F01B8C37FD001802BF /* Images.xcassets */; };
 		145A46F41B8C37FD001802BF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 145A46F21B8C37FD001802BF /* LaunchScreen.xib */; };
 		145A47001B8C37FD001802BF /* TestPodsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 145A46FF1B8C37FD001802BF /* TestPodsTests.m */; };
+		1492C0821BA2C4FD00A1300C /* WriteToDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 1492C0811BA2C4FD00A1300C /* WriteToDB.m */; };
+		1492C0851BA2CD7E00A1300C /* T.c in Sources */ = {isa = PBXBuildFile; fileRef = 1492C0841BA2CD7E00A1300C /* T.c */; };
+		1493151E1BA26AF9002A120E /* DAPXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493151D1BA26AF9002A120E /* DAPXMLParser.m */; };
+		149315221BA2722D002A120E /* DSADataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 149315211BA2722D002A120E /* DSADataBaseManager.m */; };
+		149315241BA28317002A120E /* DSADB.db in Resources */ = {isa = PBXBuildFile; fileRef = 149315231BA28317002A120E /* DSADB.db */; };
 		14D95CFC1B9E749900AB1A00 /* PageLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D95CFB1B9E749900AB1A00 /* PageLoadOperation.m */; };
 		14D95CFE1B9EA21C00AB1A00 /* plsqldev714.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14D95CFD1B9EA21C00AB1A00 /* plsqldev714.plist */; };
 		94E1D6C39561E2AA1DDD166C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC550E308523F7814C867EA /* libPods.a */; };
@@ -69,6 +74,15 @@
 		145A46F91B8C37FD001802BF /* TestPodsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestPodsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		145A46FE1B8C37FD001802BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		145A46FF1B8C37FD001802BF /* TestPodsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestPodsTests.m; sourceTree = "<group>"; };
+		1492C0801BA2C4FD00A1300C /* WriteToDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteToDB.h; sourceTree = "<group>"; };
+		1492C0811BA2C4FD00A1300C /* WriteToDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteToDB.m; sourceTree = "<group>"; };
+		1492C0831BA2C8B200A1300C /* T.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = T.h; sourceTree = "<group>"; };
+		1492C0841BA2CD7E00A1300C /* T.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = T.c; sourceTree = "<group>"; };
+		1493151C1BA26AF9002A120E /* DAPXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPXMLParser.h; path = "../../易车项目/97 技术框架/TestDataSync/Unit/解析/DAPXMLParser.h"; sourceTree = "<group>"; };
+		1493151D1BA26AF9002A120E /* DAPXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPXMLParser.m; path = "../../易车项目/97 技术框架/TestDataSync/Unit/解析/DAPXMLParser.m"; sourceTree = "<group>"; };
+		149315201BA2722D002A120E /* DSADataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSADataBaseManager.h; sourceTree = "<group>"; };
+		149315211BA2722D002A120E /* DSADataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSADataBaseManager.m; sourceTree = "<group>"; };
+		149315231BA28317002A120E /* DSADB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = DSADB.db; sourceTree = "<group>"; };
 		14D95CFA1B9E749900AB1A00 /* PageLoadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageLoadOperation.h; sourceTree = "<group>"; };
 		14D95CFB1B9E749900AB1A00 /* PageLoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageLoadOperation.m; sourceTree = "<group>"; };
 		14D95CFD1B9EA21C00AB1A00 /* plsqldev714.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = plsqldev714.plist; sourceTree = "<group>"; };
@@ -144,21 +158,22 @@
 			children = (
 				145A46E71B8C37FC001802BF /* AppDelegate.h */,
 				145A46E81B8C37FD001802BF /* AppDelegate.m */,
+				1492C0831BA2C8B200A1300C /* T.h */,
+				1492C0841BA2CD7E00A1300C /* T.c */,
 				145A46ED1B8C37FD001802BF /* Main.storyboard */,
 				145A46EA1B8C37FD001802BF /* ViewController.h */,
 				145A46EB1B8C37FD001802BF /* ViewController.m */,
 				14D95CFD1B9EA21C00AB1A00 /* plsqldev714.plist */,
 				14D95CFA1B9E749900AB1A00 /* PageLoadOperation.h */,
 				14D95CFB1B9E749900AB1A00 /* PageLoadOperation.m */,
-				141DC65E1B8EAF8F0004BCD8 /* BackGroundDownload.h */,
-				141DC65F1B8EAF8F0004BCD8 /* BackGroundDownload.m */,
-				141DC66F1B8EB6100004BCD8 /* UIImage+Helper.h */,
-				141DC6701B8EB6100004BCD8 /* UIImage+Helper.m */,
-				141DC6611B8EB0290004BCD8 /* ReformerProtocol.h */,
-				141DC6721B8EB6D00004BCD8 /* APiManager */,
-				141DC6621B8EB36A0004BCD8 /* PropertyListReformerKeys.h */,
-				141DC6631B8EB3950004BCD8 /* PropertyListReformer.h */,
-				141DC6641B8EB3950004BCD8 /* PropertyListReformer.m */,
+				1493151C1BA26AF9002A120E /* DAPXMLParser.h */,
+				1493151D1BA26AF9002A120E /* DAPXMLParser.m */,
+				1492C0801BA2C4FD00A1300C /* WriteToDB.h */,
+				1492C0811BA2C4FD00A1300C /* WriteToDB.m */,
+				149315231BA28317002A120E /* DSADB.db */,
+				149315201BA2722D002A120E /* DSADataBaseManager.h */,
+				149315211BA2722D002A120E /* DSADataBaseManager.m */,
+				1493151F1BA270F3002A120E /* Other */,
 				145A46F01B8C37FD001802BF /* Images.xcassets */,
 				145A46F21B8C37FD001802BF /* LaunchScreen.xib */,
 				145A46E31B8C37FC001802BF /* Supporting Files */,
@@ -190,6 +205,22 @@
 				145A46FE1B8C37FD001802BF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1493151F1BA270F3002A120E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				141DC65E1B8EAF8F0004BCD8 /* BackGroundDownload.h */,
+				141DC65F1B8EAF8F0004BCD8 /* BackGroundDownload.m */,
+				141DC66F1B8EB6100004BCD8 /* UIImage+Helper.h */,
+				141DC6701B8EB6100004BCD8 /* UIImage+Helper.m */,
+				141DC6611B8EB0290004BCD8 /* ReformerProtocol.h */,
+				141DC6721B8EB6D00004BCD8 /* APiManager */,
+				141DC6621B8EB36A0004BCD8 /* PropertyListReformerKeys.h */,
+				141DC6631B8EB3950004BCD8 /* PropertyListReformer.h */,
+				141DC6641B8EB3950004BCD8 /* PropertyListReformer.m */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		493B1C7F4C3BE1958164357D /* Pods */ = {
@@ -297,6 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				149315241BA28317002A120E /* DSADB.db in Resources */,
 				145A46EF1B8C37FD001802BF /* Main.storyboard in Resources */,
 				145A46F41B8C37FD001802BF /* LaunchScreen.xib in Resources */,
 				14D95CFE1B9EA21C00AB1A00 /* plsqldev714.plist in Resources */,
@@ -352,13 +384,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				141DC6651B8EB3950004BCD8 /* PropertyListReformer.m in Sources */,
+				1493151E1BA26AF9002A120E /* DAPXMLParser.m in Sources */,
 				145A46EC1B8C37FD001802BF /* ViewController.m in Sources */,
+				149315221BA2722D002A120E /* DSADataBaseManager.m in Sources */,
 				145A46E91B8C37FD001802BF /* AppDelegate.m in Sources */,
 				141DC65A1B8EAB120004BCD8 /* readme.md in Sources */,
 				141DC66E1B8EB4060004BCD8 /* ErShouFangListAPIManager.m in Sources */,
 				141DC6601B8EAF8F0004BCD8 /* BackGroundDownload.m in Sources */,
+				1492C0851BA2CD7E00A1300C /* T.c in Sources */,
 				141DC6711B8EB6100004BCD8 /* UIImage+Helper.m in Sources */,
 				141DC6681B8EB3E40004BCD8 /* ZuFangListAPIManager.m in Sources */,
+				1492C0821BA2C4FD00A1300C /* WriteToDB.m in Sources */,
 				14D95CFC1B9E749900AB1A00 /* PageLoadOperation.m in Sources */,
 				145A46E61B8C37FC001802BF /* main.m in Sources */,
 				141DC65D1B8EAF4E0004BCD8 /* APIManager.m in Sources */,
@@ -489,13 +525,13 @@
 			baseConfigurationReference = 8E101DDF76C9838A89E1E842 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: peng xu (EK437L6DC7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: peng xu (EK437L6DC7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TestPods/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "84c489a0-de77-4262-8f76-760d0b1225af";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -510,7 +546,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "84c489a0-de77-4262-8f76-760d0b1225af";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
