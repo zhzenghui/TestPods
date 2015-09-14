@@ -10,11 +10,16 @@
 
 @interface WriteToDB : NSObject {
     
-    NSMutableString *sMString;
 }
 
 + (instancetype)sharedManager ;
 
 -(void)writeDB:(NSDictionary *)xmlDict;
+
+
+- (void)open;
+
+- (void)close;
+
 
 @end

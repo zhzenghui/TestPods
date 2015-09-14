@@ -22,6 +22,7 @@
 		145A46F11B8C37FD001802BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 145A46F01B8C37FD001802BF /* Images.xcassets */; };
 		145A46F41B8C37FD001802BF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 145A46F21B8C37FD001802BF /* LaunchScreen.xib */; };
 		145A47001B8C37FD001802BF /* TestPodsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 145A46FF1B8C37FD001802BF /* TestPodsTests.m */; };
+		14834DC61BA6735100272BE1 /* NSString+Eccape.m in Sources */ = {isa = PBXBuildFile; fileRef = 14834DC51BA6735100272BE1 /* NSString+Eccape.m */; };
 		1492C0821BA2C4FD00A1300C /* WriteToDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 1492C0811BA2C4FD00A1300C /* WriteToDB.m */; };
 		1492C0851BA2CD7E00A1300C /* T.c in Sources */ = {isa = PBXBuildFile; fileRef = 1492C0841BA2CD7E00A1300C /* T.c */; };
 		1493151E1BA26AF9002A120E /* DAPXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493151D1BA26AF9002A120E /* DAPXMLParser.m */; };
@@ -74,6 +75,8 @@
 		145A46F91B8C37FD001802BF /* TestPodsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestPodsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		145A46FE1B8C37FD001802BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		145A46FF1B8C37FD001802BF /* TestPodsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestPodsTests.m; sourceTree = "<group>"; };
+		14834DC41BA6735100272BE1 /* NSString+Eccape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Eccape.h"; sourceTree = "<group>"; };
+		14834DC51BA6735100272BE1 /* NSString+Eccape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Eccape.m"; sourceTree = "<group>"; };
 		1492C0801BA2C4FD00A1300C /* WriteToDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteToDB.h; sourceTree = "<group>"; };
 		1492C0811BA2C4FD00A1300C /* WriteToDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteToDB.m; sourceTree = "<group>"; };
 		1492C0831BA2C8B200A1300C /* T.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = T.h; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				1493151D1BA26AF9002A120E /* DAPXMLParser.m */,
 				1492C0801BA2C4FD00A1300C /* WriteToDB.h */,
 				1492C0811BA2C4FD00A1300C /* WriteToDB.m */,
+				14834DC41BA6735100272BE1 /* NSString+Eccape.h */,
+				14834DC51BA6735100272BE1 /* NSString+Eccape.m */,
 				149315231BA28317002A120E /* DSADB.db */,
 				149315201BA2722D002A120E /* DSADataBaseManager.h */,
 				149315211BA2722D002A120E /* DSADataBaseManager.m */,
@@ -384,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				141DC6651B8EB3950004BCD8 /* PropertyListReformer.m in Sources */,
+				14834DC61BA6735100272BE1 /* NSString+Eccape.m in Sources */,
 				1493151E1BA26AF9002A120E /* DAPXMLParser.m in Sources */,
 				145A46EC1B8C37FD001802BF /* ViewController.m in Sources */,
 				149315221BA2722D002A120E /* DSADataBaseManager.m in Sources */,

@@ -10,17 +10,19 @@
 #import "T.h"
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
-
+#import "NSString+Eccape.h"
 
 
 @implementation WriteToDB
 
+static FMDatabaseQueue *_writeQueue = nil;
 
 + (instancetype)sharedManager {
     static WriteToDB *_sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
+        _writeQueue= [FMDatabaseQueue databaseQueueWithPath:GetDATABASE];
+
         _sharedManager = [[WriteToDB alloc] init];
     });
     
@@ -32,47 +34,55 @@
     self = [super init];
     
     if (self) {
-        sMString = [[NSMutableString alloc] init];
     }
     
     return self;
 }
 
-- (void)write:(NSString *)sql {
+- (void)write:(NSArray *)sqlArray {
     
+
     
-//        __block int change = 0;÷
-    
-    
-        FMDatabaseQueue *writeQueue = [FMDatabaseQueue databaseQueueWithPath:GetDATABASE];
-        [writeQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-            [db open];
-            if (![db open]) {
-                NSLog(@"不能打开数据库连接: %@",GetDATABASE);
-                abort();
-            }
-            
-//            [sqlArray enumerateObjectsUsingBlock:^(NSString *SQL, NSUInteger idx, BOOL *stop) {
-//                //DAPWritLog(@"TransactionSQL: %@",SQL);
-                BOOL flag = [db executeUpdate:sql];
-//                change += [db changes];
+    [_writeQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        if (![db open]) {
+            NSLog(@"不能打开数据库连接: %@",GetDATABASE);
+        }
+        __block BOOL flag = YES;
+
+        [sqlArray enumerateObjectsUsingBlock:^(NSString *SQL, NSUInteger idx, BOOL *stop) {
+                flag = [db executeUpdate:SQL];
                 if (flag == NO) {
-                    NSLog(@"事务模式--执行数据库操作时出错,sql语句:  ");
-//                    *stop = YES;
+                    NSLog(@"事务模式--执行数据库操作时出错,sql语句: %@", SQL);
+                    *stop = YES;
                     *rollback = YES;
-                    [db close];
-//                    return ;
                 }
-//            }];
         }];
-        [writeQueue close];
-//        change;
+        [db close];
+        
+    }];
+    
+    
+    [_writeQueue close];
+
+    
+    
 }
+
+
+- (void)open; {
+    
+
+}
+
+
+
 
 //INSERT INTO shuffled_tickets (ticket_idx, seed, win_credits, [timestamp], redeemed, prog_levels)
 //VALUES  (@ticket_idx, @seed, @win_credits, @timestamp, @redeemed, @prog_levels)
-- (NSString *)sqlArray :(NSDictionary *)xmlDict {
+- (NSArray *)sqlArray :(NSDictionary *)xmlDict {
     
+    
+    NSMutableArray *sArray = [NSMutableArray array];
     NSString *table = xmlDict[@"root"][@"body"][@"Content"][@"DataUnit"][@"DataUnitCode"];
     NSArray *rowList = xmlDict[@"root"][@"body"][@"Content"][@"DataUnit"][@"RowList"][@"Row"];
     
@@ -84,17 +94,17 @@
     }
     
     
-    NSMutableString *sqlMString = [NSMutableString string];
     
     for (NSDictionary *sqlDict in rowList) {
-        
+        NSMutableString *sqlMString = [NSMutableString string];
+
     
-        [sqlMString appendFormat:@"INSERT INTO %@ ", table];
+        [sqlMString appendFormat:@"REPLACE INTO %@ ", table];
         [sqlMString appendString:@"("];
         {
             NSMutableString *cs = [NSMutableString string];
             for (NSString *coulmnName in sqlDict.allKeys) {
-                [cs appendFormat:@"%@,", coulmnName];
+                [cs appendFormat:@"'%@',", coulmnName];
             }
             
             [sqlMString appendString:[cs substringWithRange:NSMakeRange(0, cs.length -1)]];
@@ -108,28 +118,31 @@
         {
             NSMutableString *cs = [NSMutableString string];
             for (NSString *coulmnName in sqlDict.allValues) {
-                [cs appendFormat:@"\"%@\",", coulmnName];
+                [cs appendFormat:@"'%@',", [coulmnName sqliteEscape]];
             }
             
             [sqlMString appendString:[cs substringWithRange:NSMakeRange(0, cs.length -1)]];
         }
         [sqlMString appendString:@");"];
 
+        [sArray addObject:sqlMString];
     }
     
     
-    return sqlMString;
+    
+    
+    return sArray;
 }
 
-- (void)execu {
+- (void)execu:(NSArray *)array {
     
     
     uint64_t begin1 = mach_absolute_time();
     //  write db
-    [self write:sMString];
+    [self write:array];
     uint64_t end1 = mach_absolute_time();
     
-    NSLog(@"db insert sql   Time  %g s   ", MachTimeToSecs(end1 - begin1));
+    NSLog(@"db insert sql count: %i个  Time:  %g s   ", array.count,  MachTimeToSecs(end1 - begin1));
     
 }
 
@@ -142,21 +155,21 @@ static int count = 10;
     
     uint64_t begin = mach_absolute_time();
     // sqls  string
-    NSString *str = [self sqlArray:xmlDict];
+    NSArray *array = [self sqlArray:xmlDict];
     uint64_t end = mach_absolute_time();
     
     NSLog(@"xml convert sql   Time  %g s   ", MachTimeToSecs(end - begin));
-    [sMString appendString:str];
-    
-    
-    str = nil;
-    if (count  == 10) {
-        [self execu];
-        count = 0;
-    }
-    else {
-        count ++;
-    }
+//    [sMString appendString:str];
+//    
+//
+//    str = nil;
+//    if (count  == 10) {
+//    [self execu:array];
+//        count = 0;
+//    }
+//    else {
+//        count ++;
+//    }
 
 
     

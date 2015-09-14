@@ -60,7 +60,7 @@ static int down_count = 5;
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * operation, id responseObject) {
 
 //            缓存文件
-//            NSString * a= [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+            NSString * a= [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 //            NSString * path=[ NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ];
 //            path=[[ NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ] stringByAppendingPathComponent :[NSString stringWithFormat:@"%i", [self.dict[@"index"] intValue]] ];
 ////
