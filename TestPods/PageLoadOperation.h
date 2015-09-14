@@ -18,7 +18,7 @@
 
 
 @property(retain) NSURL *targetURL;
-@property (nonatomic, readonly, strong) NSDictionary *dict;
+@property (nonatomic, readonly, strong) NSMutableDictionary *dict;
 @property (nonatomic, assign) id <DownloaderDelegate> delegate;
 
 - (id)initWithPhotoRecord:(NSDictionary *)record delegate:(id<DownloaderDelegate>) theDelegate;

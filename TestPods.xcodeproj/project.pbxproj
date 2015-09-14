@@ -23,6 +23,7 @@
 		145A46F41B8C37FD001802BF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 145A46F21B8C37FD001802BF /* LaunchScreen.xib */; };
 		145A47001B8C37FD001802BF /* TestPodsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 145A46FF1B8C37FD001802BF /* TestPodsTests.m */; };
 		14834DC61BA6735100272BE1 /* NSString+Eccape.m in Sources */ = {isa = PBXBuildFile; fileRef = 14834DC51BA6735100272BE1 /* NSString+Eccape.m */; };
+		14834DD01BA6AA5400272BE1 /* WriteToDBOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14834DCF1BA6AA5400272BE1 /* WriteToDBOperation.m */; };
 		1492C0821BA2C4FD00A1300C /* WriteToDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 1492C0811BA2C4FD00A1300C /* WriteToDB.m */; };
 		1492C0851BA2CD7E00A1300C /* T.c in Sources */ = {isa = PBXBuildFile; fileRef = 1492C0841BA2CD7E00A1300C /* T.c */; };
 		1493151E1BA26AF9002A120E /* DAPXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493151D1BA26AF9002A120E /* DAPXMLParser.m */; };
@@ -77,6 +78,8 @@
 		145A46FF1B8C37FD001802BF /* TestPodsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestPodsTests.m; sourceTree = "<group>"; };
 		14834DC41BA6735100272BE1 /* NSString+Eccape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Eccape.h"; sourceTree = "<group>"; };
 		14834DC51BA6735100272BE1 /* NSString+Eccape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Eccape.m"; sourceTree = "<group>"; };
+		14834DCE1BA6AA5400272BE1 /* WriteToDBOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteToDBOperation.h; sourceTree = "<group>"; };
+		14834DCF1BA6AA5400272BE1 /* WriteToDBOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteToDBOperation.m; sourceTree = "<group>"; };
 		1492C0801BA2C4FD00A1300C /* WriteToDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteToDB.h; sourceTree = "<group>"; };
 		1492C0811BA2C4FD00A1300C /* WriteToDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteToDB.m; sourceTree = "<group>"; };
 		1492C0831BA2C8B200A1300C /* T.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = T.h; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 				14D95CFD1B9EA21C00AB1A00 /* plsqldev714.plist */,
 				14D95CFA1B9E749900AB1A00 /* PageLoadOperation.h */,
 				14D95CFB1B9E749900AB1A00 /* PageLoadOperation.m */,
+				14834DCE1BA6AA5400272BE1 /* WriteToDBOperation.h */,
+				14834DCF1BA6AA5400272BE1 /* WriteToDBOperation.m */,
 				1493151C1BA26AF9002A120E /* DAPXMLParser.h */,
 				1493151D1BA26AF9002A120E /* DAPXMLParser.m */,
 				1492C0801BA2C4FD00A1300C /* WriteToDB.h */,
@@ -388,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14834DD01BA6AA5400272BE1 /* WriteToDBOperation.m in Sources */,
 				141DC6651B8EB3950004BCD8 /* PropertyListReformer.m in Sources */,
 				14834DC61BA6735100272BE1 /* NSString+Eccape.m in Sources */,
 				1493151E1BA26AF9002A120E /* DAPXMLParser.m in Sources */,

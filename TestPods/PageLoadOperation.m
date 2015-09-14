@@ -20,7 +20,7 @@
 static int down_count = 5;
 
 
-- (id)initWithPhotoRecord:(NSDictionary *)record  delegate:(id<DownloaderDelegate>)theDelegate {
+- (id)initWithPhotoRecord:(NSMutableDictionary *)record  delegate:(id<DownloaderDelegate>)theDelegate {
     
     if (self = [super init]) {
         // 2: Set the properties.
@@ -60,7 +60,7 @@ static int down_count = 5;
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * operation, id responseObject) {
 
 //            缓存文件
-            NSString * a= [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//            NSString * a= [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 //            NSString * path=[ NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ];
 //            path=[[ NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ] stringByAppendingPathComponent :[NSString stringWithFormat:@"%i", [self.dict[@"index"] intValue]] ];
 ////
@@ -71,16 +71,17 @@ static int down_count = 5;
 //                NSLog(@"%@", error);
 //            }
             
-            DAPXMLParser* pars = [[DAPXMLParser alloc] init];
-            NSInteger err = [pars parse:responseObject];
-            if (err == 0)
-            {
-               NSDictionary *parserDic = pars.dic_result;
-//                NSLog(@"xml pars: %i", self.dict[@"index"]);
-                WriteToDB *rtb = [WriteToDB sharedManager];
-                [rtb writeDB:parserDic];
-                
-            }
+//            DAPXMLParser* pars = [[DAPXMLParser alloc] init];
+//            NSInteger err = [pars parse:responseObject];
+//            if (err == 0)
+//            {
+//               NSDictionary *parserDic = pars.dic_result;
+////                NSLog(@"xml pars: %i", self.dict[@"index"]);
+////                WriteToDB *rtb = [WriteToDB sharedManager];
+////                [rtb writeDB:parserDic];
+                [self.dict setValue:responseObject forKey:@"dataDict"];
+//
+//            }
             
             
             [(NSObject *)self.delegate performSelectorOnMainThread:@selector(downloaderDidFinish:) withObject:self.dict waitUntilDone:NO];

@@ -19,11 +19,15 @@
 #import "T.h"
 
 
+#import "WriteToDBOperation.h"
+
 
 static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg";
 
-@interface ViewController () <DownloaderDelegate> {
+@interface ViewController () <DownloaderDelegate, WriteToDBDelegate> {
     NSOperationQueue *queue;
+    NSOperationQueue *dbQueue;
+
     NSArray *urlArray;
     
     uint64_t begin;
@@ -42,6 +46,12 @@ static int complite = 0;
     
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:6];
+    
+    
+    
+    
+    dbQueue = [[NSOperationQueue alloc] init];
+    [dbQueue setMaxConcurrentOperationCount:6];
     
     
     NSArray *a = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"plsqldev714" ofType:@"plist"]];
@@ -86,7 +96,8 @@ static int complite = 0;
     
     for (NSDictionary *dict in urlArray) {
         
-         PageLoadOperation *plo = [[PageLoadOperation alloc] initWithPhotoRecord:dict delegate:self];
+        NSMutableDictionary  *mDict = [dict mutableCopy];
+        PageLoadOperation *plo = [[PageLoadOperation alloc] initWithPhotoRecord:mDict delegate:self];
  
         [queue addOperation:plo];
         
@@ -111,14 +122,21 @@ static int complite = 0;
     
     NSLog(@"Time taken to doSomething %g s  index:%i complite:%d", MachTimeToSecs(end - begin), [downloader[@"index"] intValue], complite++);
     
- 
+    
+
+
     
     
+    WriteToDBOperation *plo = [[WriteToDBOperation alloc] initWithRecord:downloader delegate:self];
+    [dbQueue addOperation:plo];
 }
 
 
 
-
+#pragma mark - PageLoadOperation delegate
+- (void)writeToDbDidFinish:(NSDictionary *)downloader; {
+    
+}
 
 
 
