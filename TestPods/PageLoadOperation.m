@@ -17,7 +17,6 @@
 
 @synthesize targetURL;
 
-static int down_count = 5;
 
 
 - (id)initWithPhotoRecord:(NSMutableDictionary *)record  delegate:(id<DownloaderDelegate>)theDelegate {
@@ -79,9 +78,12 @@ static int down_count = 5;
 ////                NSLog(@"xml pars: %i", self.dict[@"index"]);
 ////                WriteToDB *rtb = [WriteToDB sharedManager];
 ////                [rtb writeDB:parserDic];
-                [self.dict setValue:responseObject forKey:@"dataDict"];
-//
-//            }
+            id  data = responseObject;
+            responseObject = nil;
+            
+            [self.dict setValue:data forKey:@"dataDict"];
+
+            
             
             
             [(NSObject *)self.delegate performSelectorOnMainThread:@selector(downloaderDidFinish:) withObject:self.dict waitUntilDone:NO];

@@ -17,15 +17,16 @@
 #import "PageLoadOperation.h"
 
 #import "T.h"
-
+//#import "T.c"
 
 #import "WriteToDBOperation.h"
-
+#import "XMLConvertDictOperation.h"
 
 static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg";
 
-@interface ViewController () <DownloaderDelegate, WriteToDBDelegate> {
+@interface ViewController () <DownloaderDelegate, XMLConvertDictDelegate, WriteToDBDelegate> {
     NSOperationQueue *queue;
+    NSOperationQueue *xmlQueue;
     NSOperationQueue *dbQueue;
 
     NSArray *urlArray;
@@ -49,9 +50,11 @@ static int complite = 0;
     
     
     
+    xmlQueue = [[NSOperationQueue alloc] init];
+    [xmlQueue setMaxConcurrentOperationCount:6];
     
     dbQueue = [[NSOperationQueue alloc] init];
-    [dbQueue setMaxConcurrentOperationCount:6];
+    [dbQueue setMaxConcurrentOperationCount:1];
     
     
     NSArray *a = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"plsqldev714" ofType:@"plist"]];
@@ -98,11 +101,9 @@ static int complite = 0;
         
         NSMutableDictionary  *mDict = [dict mutableCopy];
         PageLoadOperation *plo = [[PageLoadOperation alloc] initWithPhotoRecord:mDict delegate:self];
- 
         [queue addOperation:plo];
-        
-
     }
+    
 }
 
 
@@ -124,17 +125,36 @@ static int complite = 0;
     
     
 
+    
+    
+    XMLConvertDictOperation *plo = [[XMLConvertDictOperation alloc] initWithRecord:downloader delegate:self];
+    [xmlQueue addOperation:plo];
+    
+    
 
-    
-    
-    WriteToDBOperation *plo = [[WriteToDBOperation alloc] initWithRecord:downloader delegate:self];
-    [dbQueue addOperation:plo];
+
 }
 
+#pragma mark - WriteToDB delegate
+- (void)xmlConvertDictDidFinish:(NSArray *)sqlArray; {
+    
+    
+    uint64_t end = mach_absolute_time();
+    
+    NSLog(@"Time taken to doSomething %g s,  sql count: %i个", MachTimeToSecs(end - begin), sqlArray.count);
+    
+    WriteToDBOperation *plo = [[WriteToDBOperation alloc] initWithRecord:sqlArray delegate:self];
+    [dbQueue addOperation:plo];
 
+}
 
-#pragma mark - PageLoadOperation delegate
+#pragma mark - WriteToDB delegate
 - (void)writeToDbDidFinish:(NSDictionary *)downloader; {
+    
+    
+    uint64_t end = mach_absolute_time();
+    
+    NSLog(@"all time %g s  index:%i ", MachTimeToSecs(end - begin), [downloader[@"index"] intValue]);
     
 }
 
@@ -143,11 +163,11 @@ static int complite = 0;
 #pragma mark - APIManagerDelegate
 - (void)apiManagerDidSuccess:(APIManager *)manager
 {
-    NSDictionary *reformedXXXData = [manager fetchDataWithReformer:self.XXXReformer];
-//    [self.XXXView configWithData:reformedXXXData];
-    
-    NSDictionary *reformedYYYData = [manager fetchDataWithReformer:self.YYYReformer];
-//    [self.YYYView configWithData:reformedYYYData];
+//    NSDictionary *reformedXXXData = [manager fetchDataWithReformer:self.XXXReformer];
+////    [self.XXXView configWithData:reformedXXXData];
+//    
+//    NSDictionary *reformedYYYData = [manager fetchDataWithReformer:self.YYYReformer];
+////    [self.YYYView configWithData:reformedYYYData];
 }
 
 

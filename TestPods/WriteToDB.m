@@ -44,12 +44,13 @@ static FMDatabaseQueue *_writeQueue = nil;
 
     
     [_writeQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        if (![db open]) {
-            NSLog(@"不能打开数据库连接: %@",GetDATABASE);
-        }
+
         __block BOOL flag = YES;
 
         [sqlArray enumerateObjectsUsingBlock:^(NSString *SQL, NSUInteger idx, BOOL *stop) {
+            if (![db open]) {
+                NSLog(@"不能打开数据库连接: %@",GetDATABASE);
+            }
                 flag = [db executeUpdate:SQL];
                 if (flag == NO) {
                     NSLog(@"事务模式--执行数据库操作时出错,sql语句: %@", SQL);
@@ -153,12 +154,12 @@ static int count = 10;
     
     
     
-    uint64_t begin = mach_absolute_time();
-    // sqls  string
-    NSArray *array = [self sqlArray:xmlDict];
-    uint64_t end = mach_absolute_time();
-    
-    NSLog(@"xml convert sql   Time  %g s   ", MachTimeToSecs(end - begin));
+//    uint64_t begin = mach_absolute_time();
+//    // sqls  string
+//    NSArray *array = [self sqlArray:xmlDict];
+//    uint64_t end = mach_absolute_time();
+//    
+//    NSLog(@"xml convert sql   Time  %g s   ", MachTimeToSecs(end - begin));
 //    [sMString appendString:str];
 //    
 //

@@ -18,10 +18,10 @@
 
 
 
-@property (nonatomic, readonly, strong) NSDictionary *dict;
+@property (nonatomic, readonly, strong) NSArray *array;
 @property (nonatomic, assign) id <WriteToDBDelegate> delegate;
 
-- (id)initWithRecord:(NSDictionary *)record delegate:(id<WriteToDBDelegate>) theDelegate;
+- (id)initWithRecord:(NSArray *)record delegate:(id<WriteToDBDelegate>) theDelegate;
 
 @end
 
