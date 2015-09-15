@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "T.h"
+
+
 
 @interface AppDelegate ()
 
@@ -16,8 +19,30 @@
 @implementation AppDelegate
 
 
+
+//校验数据库
+- (void)validateDatabase
+{
+    //原始数据库路径
+    NSString *originalDataBasePath = [[NSBundle mainBundle] pathForResource:DATABASE_NAME_PREFIX ofType:@"db"];
+    
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    NSLog(@"3.2 GetDATABASE = %@",GetDATABASE);
+    if (![fileManager fileExistsAtPath:GetDATABASE]) {
+        //如果不存在数据库，将原始数据库复制到目标文件夹下
+        [fileManager copyItemAtPath:originalDataBasePath toPath:GetDATABASE error:nil];
+    }else {
+        //TODO 对原始数据库与业务数据库的表结构进行对比
+    }
+    
+    
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self validateDatabase];
     return YES;
 }
 
