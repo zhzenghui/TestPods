@@ -1,6 +1,3 @@
-###1.3
-- xml 转换，fmdb的写入数据
-
 ###1.2
 -网络层架构实践，  架构信息来源 (http://casatwy.com/iosying-yong-jia-gou-tan-wang-luo-ceng-she-ji-fang-an.html)
 
