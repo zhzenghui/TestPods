@@ -42,6 +42,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+
+    
+    
     [self validateDatabase];
     return YES;
 }
@@ -73,19 +78,6 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
--(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    UINavigationController *navigationController = (UINavigationController*)self.window.rootViewController;
-    
-    id topViewController = navigationController.topViewController;
-    if ([topViewController isKindOfClass:[ViewController class]]) {
-//        [(ViewController*)topViewController insertNewObjectForFetchWithCompletionHandler:completionHandler];
-    } else {
-        NSLog(@"Not the right class %@.", [topViewController class]);
-        completionHandler(UIBackgroundFetchResultFailed);
-    }
-}
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier
   completionHandler:(void (^)())completionHandler {
     self.backgroundSessionCompletionHandler = completionHandler;
@@ -110,6 +102,30 @@
     [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
 }
 
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    UINavigationController *navigationController = (UINavigationController*)self.window.rootViewController;
+    
+    id fetchViewController = navigationController.topViewController;
+    if ([fetchViewController respondsToSelector:@selector(fetchDataResult:)]) {
+//        [fetchViewController fetchDataResult:^(NSError *error, NSArray *results){
+//            if (!error) {
+//                if (results.count != 0) {
+//                    //Update UI with results.
+//                    //Tell system all done.
+//                    completionHandler(UIBackgroundFetchResultNewData);
+//                } else {
+//                    completionHandler(UIBackgroundFetchResultNoData);
+//                }
+//            } else {
+//                completionHandler(UIBackgroundFetchResultFailed);
+//            }
+//        }];
+    } else {
+        completionHandler(UIBackgroundFetchResultFailed);
+    }
+}
 
 
 @end

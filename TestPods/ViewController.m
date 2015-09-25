@@ -15,6 +15,7 @@
 #import "APIManager.h"
 
 #import "PageLoadOperation.h"
+#import "SDPieLoopProgressView.h"
 
 #import "T.h"
 //#import "T.c"
@@ -24,7 +25,7 @@
 
 static NSString *DownloadURLString = @"http://m2.pc6.com/mac/OmniGrafflePro.dmg";
 
-@interface ViewController () <DownloaderDelegate, XMLConvertDictDelegate, WriteToDBDelegate> {
+@interface ViewController () <DownloaderDelegate, XMLConvertDictDelegate, WriteToDBDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate,UIDocumentInteractionControllerDelegate> {
     NSOperationQueue *queue;
     NSOperationQueue *xmlQueue;
     NSOperationQueue *dbQueue;
@@ -79,13 +80,67 @@ static int complite = 0;
     //    NSLog(@"%@, %@", st1, st2);
     
     begin = mach_absolute_time();
+    
+    
+    for (NSDictionary *dict in urlArray) {
+        
+        NSMutableDictionary  *mDict = [dict mutableCopy];
+        PageLoadOperation *plo = [[PageLoadOperation alloc] initWithPhotoRecord:mDict delegate:self];
+        [queue addOperation:plo];
+    }
 }
+
+
+-(void)presentNotification{
+    
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+        
+    }
+    
+    
+    
+    
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.alertBody = @"Download Complete!";
+    localNotification.alertAction = @"Background Transfer Download!";
+    
+    //On sound
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    
+    //increase the badge number of application plus 1
+    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    
+    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+}
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     
-    [self startTestConnectons];
+    SDPieLoopProgressView *loop = [SDPieLoopProgressView progressView];
+    loop.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+    loop.progress = 0.08;
+    [self.view addSubview:loop];
+    
+//    [self startTestConnectons];
+    
+//    self.session = [self backgroundSession];
+//    
+//    self.progressView.progress = 0;
+//    self.progressView.hidden = YES;
+//    
+//    
+//    
+//    AFHTTPSessionManager *sm = [AFHTTPSessionManager manager];
+//    
+//    
+//    [self start:nil];
+
 }
 
 
@@ -97,12 +152,7 @@ static int complite = 0;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     
-    for (NSDictionary *dict in urlArray) {
-        
-        NSMutableDictionary  *mDict = [dict mutableCopy];
-        PageLoadOperation *plo = [[PageLoadOperation alloc] initWithPhotoRecord:mDict delegate:self];
-        [queue addOperation:plo];
-    }
+
     
 }
 
@@ -135,7 +185,7 @@ static int complite = 0;
 
 }
 
-#pragma mark - WriteToDB delegate
+#pragma mark - xml  convert dict delegate
 - (void)xmlConvertDictDidFinish:(NSArray *)sqlArray; {
     
     

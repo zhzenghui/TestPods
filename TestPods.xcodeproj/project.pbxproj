@@ -32,6 +32,9 @@
 		1493151E1BA26AF9002A120E /* DAPXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1493151D1BA26AF9002A120E /* DAPXMLParser.m */; };
 		149315221BA2722D002A120E /* DSADataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 149315211BA2722D002A120E /* DSADataBaseManager.m */; };
 		149315241BA28317002A120E /* DSADB.db in Resources */ = {isa = PBXBuildFile; fileRef = 149315231BA28317002A120E /* DSADB.db */; };
+		14C5416F1BAFC8E2003F986F /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14C5416E1BAFC8E2003F986F /* Property List.plist */; };
+		14C541741BAFF4D7003F986F /* SDPieLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C541711BAFF4D7003F986F /* SDPieLoopProgressView.m */; };
+		14C541751BAFF4D7003F986F /* SDBaseProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C541731BAFF4D7003F986F /* SDBaseProgressView.m */; };
 		14D95CFC1B9E749900AB1A00 /* PageLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D95CFB1B9E749900AB1A00 /* PageLoadOperation.m */; };
 		14D95CFE1B9EA21C00AB1A00 /* plsqldev714.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14D95CFD1B9EA21C00AB1A00 /* plsqldev714.plist */; };
 		94E1D6C39561E2AA1DDD166C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC550E308523F7814C867EA /* libPods.a */; };
@@ -96,6 +99,11 @@
 		149315201BA2722D002A120E /* DSADataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSADataBaseManager.h; sourceTree = "<group>"; };
 		149315211BA2722D002A120E /* DSADataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSADataBaseManager.m; sourceTree = "<group>"; };
 		149315231BA28317002A120E /* DSADB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = DSADB.db; sourceTree = "<group>"; };
+		14C5416E1BAFC8E2003F986F /* Property List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
+		14C541701BAFF4D7003F986F /* SDPieLoopProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPieLoopProgressView.h; sourceTree = "<group>"; };
+		14C541711BAFF4D7003F986F /* SDPieLoopProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPieLoopProgressView.m; sourceTree = "<group>"; };
+		14C541721BAFF4D7003F986F /* SDBaseProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBaseProgressView.h; sourceTree = "<group>"; };
+		14C541731BAFF4D7003F986F /* SDBaseProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBaseProgressView.m; sourceTree = "<group>"; };
 		14D95CFA1B9E749900AB1A00 /* PageLoadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageLoadOperation.h; sourceTree = "<group>"; };
 		14D95CFB1B9E749900AB1A00 /* PageLoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageLoadOperation.m; sourceTree = "<group>"; };
 		14D95CFD1B9EA21C00AB1A00 /* plsqldev714.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = plsqldev714.plist; sourceTree = "<group>"; };
@@ -181,6 +189,10 @@
 				14D95CFA1B9E749900AB1A00 /* PageLoadOperation.h */,
 				14D95CFB1B9E749900AB1A00 /* PageLoadOperation.m */,
 				14834DCE1BA6AA5400272BE1 /* WriteToDBOperation.h */,
+				14C541701BAFF4D7003F986F /* SDPieLoopProgressView.h */,
+				14C541711BAFF4D7003F986F /* SDPieLoopProgressView.m */,
+				14C541721BAFF4D7003F986F /* SDBaseProgressView.h */,
+				14C541731BAFF4D7003F986F /* SDBaseProgressView.m */,
 				14834DCF1BA6AA5400272BE1 /* WriteToDBOperation.m */,
 				1446D42D1BA7C55E00FC440E /* XMLConvertDictOperation.h */,
 				1446D42E1BA7C55E00FC440E /* XMLConvertDictOperation.m */,
@@ -192,6 +204,7 @@
 				14834DC51BA6735100272BE1 /* NSString+Eccape.m */,
 				149315231BA28317002A120E /* DSADB.db */,
 				149315201BA2722D002A120E /* DSADataBaseManager.h */,
+				14C5416E1BAFC8E2003F986F /* Property List.plist */,
 				149315211BA2722D002A120E /* DSADataBaseManager.m */,
 				1493151F1BA270F3002A120E /* Other */,
 				145A46F01B8C37FD001802BF /* Images.xcassets */,
@@ -313,7 +326,7 @@
 				TargetAttributes = {
 					145A46DF1B8C37FC001802BF = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 6NVJSUYH42;
+						DevelopmentTeam = YCB56CTEN3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -351,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1446D4331BA807D400FC440E /* AlipaySDK.bundle in Resources */,
+				14C5416F1BAFC8E2003F986F /* Property List.plist in Resources */,
 				149315241BA28317002A120E /* DSADB.db in Resources */,
 				145A46EF1B8C37FD001802BF /* Main.storyboard in Resources */,
 				145A46F41B8C37FD001802BF /* LaunchScreen.xib in Resources */,
@@ -407,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14834DD01BA6AA5400272BE1 /* WriteToDBOperation.m in Sources */,
+				14C541741BAFF4D7003F986F /* SDPieLoopProgressView.m in Sources */,
 				141DC6651B8EB3950004BCD8 /* PropertyListReformer.m in Sources */,
 				14834DC61BA6735100272BE1 /* NSString+Eccape.m in Sources */,
 				1493151E1BA26AF9002A120E /* DAPXMLParser.m in Sources */,
@@ -425,6 +440,7 @@
 				145A46E61B8C37FC001802BF /* main.m in Sources */,
 				141DC65D1B8EAF4E0004BCD8 /* APIManager.m in Sources */,
 				141DC66B1B8EB3F60004BCD8 /* XinFangListAPIManager.m in Sources */,
+				14C541751BAFF4D7003F986F /* SDBaseProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +499,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: peng xu (EK437L6DC7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: peng xu (EK437L6DC7)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -505,6 +522,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "4a9ba069-1851-4d1f-a066-346666d0ee76";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -526,7 +544,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: peng xu (EK437L6DC7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: peng xu (EK437L6DC7)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -541,6 +560,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "65b37218-c59e-486c-8d63-de173897e47a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -551,18 +571,17 @@
 			baseConfigurationReference = 8E101DDF76C9838A89E1E842 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: peng xu (EK437L6DC7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: peng xu (EK437L6DC7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = TestPods/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "65b37218-c59e-486c-8d63-de173897e47a";
 			};
 			name = Debug;
 		};
@@ -571,8 +590,8 @@
 			baseConfigurationReference = 08078E48805BD064007DFF42 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: peng xu (EK437L6DC7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: peng xu (EK437L6DC7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -581,7 +600,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "65b37218-c59e-486c-8d63-de173897e47a";
 			};
 			name = Release;
 		};

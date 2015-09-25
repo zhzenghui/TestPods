@@ -109,6 +109,17 @@
             
             
             NSArray *array = [self sqlArray:parserDic];
+
+            NSString * path=[ NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ];
+            path=[[ NSSearchPathForDirectoriesInDomains ( NSDocumentDirectory , NSUserDomainMask , YES ) objectAtIndex : 0 ] stringByAppendingPathComponent :[NSString stringWithFormat:@"%i", [self.dict[@"index"] intValue]] ];
+//
+            NSError *error = nil;
+            [array writeToFile:path atomically:YES];
+            if (error) {
+                NSLog(@"%@", error);
+            }
+
+            
             [(NSObject *)self.delegate performSelectorOnMainThread:@selector(xmlConvertDictDidFinish:) withObject:array waitUntilDone:NO];
             
         }
